@@ -26,46 +26,56 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
     }
   }
 
-  const salinityRange = document.getElementById("salinityRange");
-  const salinityNumberInput = document.getElementById("salinityNumberInput");
-  const salinityBigDisplay = document.getElementById("salinityBigDisplay");
-  const salinityGradeTag = document.getElementById("salinityGradeTag");
+  const safeGet = (id) => safeGet(id) || {
+    get textContent() { return ''; }, set textContent(v) {},
+    get className() { return ''; }, set className(v) {},
+    get innerHTML() { return ''; }, set innerHTML(v) {},
+    get value() { return ''; }, set value(v) {},
+    classList: { add: ()=>{}, remove: ()=>{} },
+    style: {},
+    addEventListener: ()=>{}
+  };
 
-  const waterPercentageValue = document.getElementById("waterPercentageValue");
-  const waterProgressRing = document.getElementById("waterProgressRing");
-  const waterStatusPill = document.getElementById("waterStatusPill");
+  const salinityRange = safeGet("salinityRange");
+  const salinityNumberInput = safeGet("salinityNumberInput");
+  const salinityBigDisplay = safeGet("salinityBigDisplay");
+  const salinityGradeTag = safeGet("salinityGradeTag");
 
-  const headerWaterStatus = document.getElementById("headerWaterStatus");
-  const headerGateBadge = document.getElementById("headerGateBadge");
-  const headerAlarmText = document.getElementById("headerAlarmText");
-  const alarmBeaconDot = document.getElementById("alarmBeaconDot");
+  const waterPercentageValue = safeGet("waterPercentageValue");
+  const waterProgressRing = safeGet("waterProgressRing");
+  const waterStatusPill = safeGet("waterStatusPill");
 
-  const sluiceStateLabel = document.getElementById("sluiceStateLabel");
-  const sluiceGateVisual = document.getElementById("sluiceGateVisual");
-  const ledD14Box = document.getElementById("ledD14Box");
-  const ledD14Indicator = document.getElementById("ledD14Indicator");
-  const ledD14Status = document.getElementById("ledD14Status");
-  const ledD13Box = document.getElementById("ledD13Box");
-  const ledD13Indicator = document.getElementById("ledD13Indicator");
-  const ledD13Status = document.getElementById("ledD13Status");
-  const alarmCardFooter = document.getElementById("alarmCardFooter");
-  const alarmStreamDesc = document.getElementById("alarmStreamDesc");
+  const headerWaterStatus = safeGet("headerWaterStatus");
+  const headerGateBadge = safeGet("headerGateBadge");
+  const headerAlarmText = safeGet("headerAlarmText");
+  const alarmBeaconDot = safeGet("alarmBeaconDot");
 
-  const flowStep1Result = document.getElementById("flowStep1Result");
-  const flowStep2Result = document.getElementById("flowStep2Result");
-  const flowStep3Result = document.getElementById("flowStep3Result");
-  const logicBannerBox = document.getElementById("logicBannerBox");
-  const logicBannerIcon = document.getElementById("logicBannerIcon");
-  const logicBannerText = document.getElementById("logicBannerText");
+  const sluiceStateLabel = safeGet("sluiceStateLabel");
+  const sluiceGateVisual = safeGet("sluiceGateVisual");
+  const ledD14Box = safeGet("ledD14Box");
+  const ledD14Indicator = safeGet("ledD14Indicator");
+  const ledD14Status = safeGet("ledD14Status");
+  const ledD13Box = safeGet("ledD13Box");
+  const ledD13Indicator = safeGet("ledD13Indicator");
+  const ledD13Status = safeGet("ledD13Status");
+  const alarmCardFooter = safeGet("alarmCardFooter");
+  const alarmStreamDesc = safeGet("alarmStreamDesc");
 
-  const tblV0 = document.getElementById("tblV0");
-  const tblV1 = document.getElementById("tblV1");
-  const tblV2 = document.getElementById("tblV2");
-  const tblV3 = document.getElementById("tblV3");
-  const tblV4 = document.getElementById("tblV4");
+  const flowStep1Result = safeGet("flowStep1Result");
+  const flowStep2Result = safeGet("flowStep2Result");
+  const flowStep3Result = safeGet("flowStep3Result");
+  const logicBannerBox = safeGet("logicBannerBox");
+  const logicBannerIcon = safeGet("logicBannerIcon");
+  const logicBannerText = safeGet("logicBannerText");
 
-  const btnRefresh = document.getElementById("btnRefresh");
-  const btnOverride = document.getElementById("btnOverride");
+  const tblV0 = safeGet("tblV0");
+  const tblV1 = safeGet("tblV1");
+  const tblV2 = safeGet("tblV2");
+  const tblV3 = safeGet("tblV3");
+  const tblV4 = safeGet("tblV4");
+
+  const btnRefresh = safeGet("btnRefresh");
+  const btnOverride = safeGet("btnOverride");
 
   function updateDashboard() {
     // 1. Water Gauge Update
