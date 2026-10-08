@@ -20,13 +20,14 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
       waterPercent = parseInt(await resV0.text()) || 0;
 
       const resV3 = await fetch(`${BLYNK_URL}/get?token=${BLYNK_AUTH}&V3`);
-      salinity = parseFloat(await resV3.text()) || 0.0;
+      const cloudSalinity = parseFloat(await resV3.text()) || 0.0;
 
-      // Jangan timpa input jika user sedang mengetik/menggeser
+      // Jangan timpa nilai lokal jika user sedang mengetik/menggeser
       if (
         document.activeElement !== salinityRange &&
         document.activeElement !== salinityNumberInput
       ) {
+        salinity = cloudSalinity;
         salinityRange.value = Math.min(salinity, 40.0);
         salinityNumberInput.value = salinity.toFixed(2);
       }
@@ -318,8 +319,10 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
   });
 
   salinityRange.addEventListener("input", function (e) {
-    // Update UI lokal saja saat di-drag agar responsif
-    salinityNumberInput.value = parseFloat(e.target.value).toFixed(2);
+    // Update UI dan logika lokal secara live saat di-drag
+    salinity = parseFloat(e.target.value);
+    salinityNumberInput.value = salinity.toFixed(2);
+    updateDashboard(); // Memperbarui angka besar di card secara instan
   });
 
   salinityNumberInput.addEventListener("change", function (e) {
