@@ -26,7 +26,7 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
     }
   }
 
-  const safeGet = (id) => safeGet(id) || {
+  const safeGet = (id) => document.getElementById(id) || {
     get textContent() { return ''; }, set textContent(v) {},
     get className() { return ''; }, set className(v) {},
     get innerHTML() { return ''; }, set innerHTML(v) {},
