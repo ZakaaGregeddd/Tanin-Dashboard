@@ -27,7 +27,7 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
         document.activeElement !== salinityRange &&
         document.activeElement !== salinityNumberInput
       ) {
-        salinityRange.value = Math.min(salinity, 4.0);
+        salinityRange.value = Math.min(salinity, 40.0);
         salinityNumberInput.value = salinity.toFixed(2);
       }
 
@@ -328,7 +328,7 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
     if (val < 0) val = 0;
     if (val > 40) val = 40;
     salinity = val;
-    salinityRange.value = Math.min(val, 4.0);
+    salinityRange.value = Math.min(val, 40.0);
     pushSalinityToBlynk(salinity);
     updateDashboard();
   });
