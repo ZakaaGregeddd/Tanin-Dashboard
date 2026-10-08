@@ -143,7 +143,7 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
       sluiceStateLabel.textContent = "POSISI: TERKUNCI RAPAT";
       sluiceStateLabel.className = "text-alarm-crimson font-bold";
       sluiceGateVisual.className =
-        "w-32 h-14 bg-alarm-crimson rounded-md shadow-md flex items-center justify-center transition-all duration-700 translate-y-3";
+        "w-32 h-14 bg-alarm-crimson rounded-md shadow-md flex items-center justify-center transition-all duration-700 mt-2";
       sluiceGateVisual.innerHTML =
         '<span class="material-symbols-outlined text-on-primary text-[24px]">lock</span><span class="font-label-sm text-label-sm text-on-primary font-semibold ml-1">LOCKED</span>';
 
@@ -202,7 +202,7 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
       sluiceStateLabel.textContent = "POSISI: NAIK (MENGALIR)";
       sluiceStateLabel.className = "text-primary font-bold";
       sluiceGateVisual.className =
-        "w-32 h-14 bg-crop-emerald/80 rounded-md shadow-md flex items-center justify-center transition-all duration-700 -translate-y-4";
+        "w-32 h-14 bg-crop-emerald/80 rounded-md shadow-md flex items-center justify-center transition-all duration-700 mt-2";
       sluiceGateVisual.innerHTML =
         '<span class="material-symbols-outlined text-on-primary text-[24px]">vertical_align_top</span><span class="font-label-sm text-label-sm text-on-primary font-semibold ml-1">TERBUKA</span>';
 
@@ -262,7 +262,7 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
       sluiceStateLabel.textContent = "POSISI: TERTUTUP BIASA";
       sluiceStateLabel.className = "text-text-secondary font-bold";
       sluiceGateVisual.className =
-        "w-32 h-14 bg-text-muted rounded-md shadow-md flex items-center justify-center transition-all duration-700 translate-y-3";
+        "w-32 h-14 bg-text-muted rounded-md shadow-md flex items-center justify-center transition-all duration-700 mt-2";
       sluiceGateVisual.innerHTML =
         '<span class="material-symbols-outlined text-on-primary text-[24px]">check</span><span class="font-label-sm text-label-sm text-on-primary font-semibold ml-1">TERTUTUP</span>';
 
