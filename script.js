@@ -16,21 +16,9 @@ const BLYNK_URL = "https://blynk.cloud/external/api";
 
   async function fetchBlynkData() {
     try {
+      // Hanya tarik data sensor ketinggian air (V0)
       const resV0 = await fetch(`${BLYNK_URL}/get?token=${BLYNK_AUTH}&V0`);
       waterPercent = parseInt(await resV0.text()) || 0;
-
-      const resV3 = await fetch(`${BLYNK_URL}/get?token=${BLYNK_AUTH}&V3`);
-      const cloudSalinity = parseFloat(await resV3.text()) || 0.0;
-
-      // Jangan timpa nilai lokal jika user sedang mengetik/menggeser
-      if (
-        document.activeElement !== salinityRange &&
-        document.activeElement !== salinityNumberInput
-      ) {
-        salinity = cloudSalinity;
-        salinityRange.value = Math.min(salinity, 40.0);
-        salinityNumberInput.value = salinity.toFixed(2);
-      }
 
       updateDashboard();
     } catch (err) {
